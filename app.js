@@ -22,31 +22,39 @@ fetch("https://api.spacexdata.com/v5/launches")
         // create an article that we want to append within the list variable 
         // so each section has an article for each launch - this will seperate out the sets of data 
         // every time we go through the array we want to create a new <article> for all the details for a specific launch to be stored within
-        const createArticle = document.createElement("article");
+        const article = document.createElement("article");
         // appending the new article to the 'list' variable
-        list.appendChild(createArticle);
+        
 
         // class tag for article 
         // created for using it within css - call on the article class tag to add all the css features
         // not doing anything of value in the js
-        createArticle.classList.add("articleTag");
-
+        article.classList.add("articleTag");
 
 
         // add launch names 
-        const listItem = document.createElement("li");
+        const listItem = document.createElement("h2");
         listItem.innerText = launch.name;
-        list.appendChild(listItem);
+        article.appendChild(listItem);
+
+        // add launch flight number
+        const listFlightNumber = document.createElement("h3");
+        listFlightNumber.innerText = ("Flight number: " + launch.flight_number);
+        article.appendChild(listFlightNumber); 
    
         // add launch links 
-        const listArticle = document.createElement("li");
-        listArticle.innerText = launch.links.article;
-        list.appendChild(listArticle);
+        const hyperLink = document.createElement("a");
+        hyperLink.href = launch.links.article;
+        hyperLink.innerText = "Launch-article";
+        article.appendChild(hyperLink);
   
         // add launch images 
         const listImage = document.createElement("img");
         listImage.src = launch.links.patch.small;
-        list.appendChild(listImage);
+        article.appendChild(listImage);
+
+        // appending each article into 'list' variable - do it right at the end once article is complete 
+        list.appendChild(article);
 
     })
  
