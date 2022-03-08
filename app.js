@@ -14,9 +14,38 @@ fetch("https://api.spacexdata.com/v5/launches")
 .then(() => {
 // then we want to store the selected data from the dom into the variable called list; list is equal to the location of launch list
     const list = document.querySelector("#launch-list");
+
+    launches.forEach(launch => {
+        // add launch names 
+        const listItem = document.createElement("li");
+        listItem.innerText = launch.name;
+        list.appendChild(listItem);
+   
+        // add launch links 
+        const listArticle = document.createElement("li");
+        listArticle.innerText = launch.links.article;
+        list.appendChild(listArticle);
+  
+        // add launch images 
+        const listImage = document.createElement("img");
+        listImage.src = launch.links.patch.small;
+        list.appendChild(listImage);
+
+    })
+ 
+
+});
+}
+
+loadData();
+
+
+// -------------------------------------------
+
+// different method using map() higher function 
+
 // then we're looping through all the launch array and then getting the names within the array, then we put them in the variable called launchNames
 // the map function creates a new array populated with results of calling a provided function on every element on the array that you pass in 
-
 //     const launchNames = launches.map(launches => launches.name)
 // // so for each name within launch names, we want the 
 //             launchNames.forEach((name) => {
@@ -24,15 +53,9 @@ fetch("https://api.spacexdata.com/v5/launches")
 //                 listItem.innerText = name;
 //                 list.appendChild(listItem);
 //             });
-    launches.forEach(launch => {
-        const listItem = document.createElement("li");
-        listItem.innerText = launch.links.article;
-        list.appendChild(listItem);
-    })
+
     
- 
 
-});
-}
 
-loadData();
+
+    
