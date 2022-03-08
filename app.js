@@ -12,11 +12,13 @@ fetch("https://api.spacexdata.com/v5/launches")
 .then(data => launches = data)
 
 .then(() => {
-
+// then we want to store the selected data from the dom into the variable called list; list is equal to the location of launch list
     const list = document.querySelector("#launch-list");
-     
-    const launchNames = launches.map(launches => launches.name)
+// then we're looping through all the launch array and then getting the names within the array, then we put them in the variable called launchNames
+// the map function creates a new array populated with results of calling a provided function on every element on the array that you pass in 
 
+    const launchNames = launches.map(launches => launches.name)
+// so for each name within launch names, we want the 
             launchNames.forEach((name) => {
                 const listItem = document.createElement("li")
                 listItem.innerText = name;
