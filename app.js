@@ -17,13 +17,20 @@ fetch("https://api.spacexdata.com/v5/launches")
 // then we're looping through all the launch array and then getting the names within the array, then we put them in the variable called launchNames
 // the map function creates a new array populated with results of calling a provided function on every element on the array that you pass in 
 
-    const launchNames = launches.map(launches => launches.name)
-// so for each name within launch names, we want the 
-            launchNames.forEach((name) => {
-                const listItem = document.createElement("li")
-                listItem.innerText = name;
-                list.appendChild(listItem);
-            });
+//     const launchNames = launches.map(launches => launches.name)
+// // so for each name within launch names, we want the 
+//             launchNames.forEach((name) => {
+//                 const listItem = document.createElement("li")
+//                 listItem.innerText = name;
+//                 list.appendChild(listItem);
+//             });
+    launches.forEach(launch => {
+        const listItem = document.createElement("li");
+        listItem.innerText = launch.links.article;
+        list.appendChild(listItem);
+    })
+    
+ 
 
 });
 }
