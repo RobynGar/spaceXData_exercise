@@ -13,9 +13,26 @@ fetch("https://api.spacexdata.com/v5/launches")
 
 .then(() => {
 // then we want to store the selected data from the dom into the variable called list; list is equal to the location of launch list
-    const list = document.querySelector("#launch-list");
-
+// creating 'list' variable and setting it to be located at the 'launch-info' element in the DOM
+    const list = document.querySelector(".launch-info");
+// want to go through the launches array 
+// and for each launches element in the array (create new variable called launch) we want to get each of these things 
     launches.forEach(launch => {
+
+        // create an article that we want to append within the list variable 
+        // so each section has an article for each launch - this will seperate out the sets of data 
+        // every time we go through the array we want to create a new <article> for all the details for a specific launch to be stored within
+        const createArticle = document.createElement("article");
+        // appending the new article to the 'list' variable
+        list.appendChild(createArticle);
+
+        // class tag for article 
+        // created for using it within css - call on the article class tag to add all the css features
+        // not doing anything of value in the js
+        createArticle.classList.add("articleTag");
+
+
+
         // add launch names 
         const listItem = document.createElement("li");
         listItem.innerText = launch.name;
