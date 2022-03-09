@@ -33,8 +33,11 @@ fetch("https://api.spacexdata.com/v5/launches")
 
 
         // add launch names 
+        // creating a h2 element 
         const listItem = document.createElement("h2");
+        // want the variable to contain the launch names for each launch
         listItem.innerText = launch.name;
+        // appending the 'listItem' variable within the 'article' variable
         article.appendChild(listItem);
 
         // add launch flight number
@@ -43,13 +46,19 @@ fetch("https://api.spacexdata.com/v5/launches")
         article.appendChild(listFlightNumber); 
    
         // add launch links 
+        // creating an anchor element to create a hyperlink
         const hyperLink = document.createElement("a");
+        // need to use .href for a hyperlink rather than innerText
         hyperLink.href = launch.links.article;
+        // we want the hyperlink to have text so still need innerText for this
         hyperLink.innerText = "Launch-article";
+        // append it to the article variable
         article.appendChild(hyperLink);
   
         // add launch images 
+        // creating an image so we need the 'img' element 
         const listImage = document.createElement("img");
+        // need to specify the source for the image so its 'src' not 'innerText
         listImage.src = launch.links.patch.small;
         article.appendChild(listImage);
 
@@ -62,7 +71,10 @@ fetch("https://api.spacexdata.com/v5/launches")
 });
 }
 
+// calling the function which contains all of these methods
 loadData();
+
+
 
 
 // -------------------------------------------
